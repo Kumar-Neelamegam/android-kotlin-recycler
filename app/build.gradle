@@ -1,0 +1,55 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+
+    compileSdkVersion 28
+    defaultConfig {
+        multiDexEnabled = true
+        applicationId "at.allaboutapps.a3hiring"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+    dexOptions {
+        incremental = true
+        preDexLibraries = false
+        javaMaxHeapSize "4g"
+    }
+    buildToolsVersion '28.0.3'
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:support-vector-drawable:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.github.100rabhkr:GetJSON:1.0'
+}
+
+repositories {
+    mavenCentral()
+}
